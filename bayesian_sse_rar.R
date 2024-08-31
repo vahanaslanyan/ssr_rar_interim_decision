@@ -158,3 +158,20 @@ predictive_power<-function(mean_treatment_effects=c(0,1),
                   qnorm(1-alpha/2)*sqrt(final_information))/sqrt(final_information-interim_information)
   predictive_power<-pnorm(upper_sided)+pnorm(lower_sided)
 }
+
+obrien_fleming_boundary<-function(interim_sample_sizes=c(20,20),
+                                  final_sample_sizes=c(40,40),
+                                  alpha=0.05){
+  boundary<-2-2*pnorm(qnorm(alpha/2)/sqrt(sum(interim_sample_sizes)/sum(final_sample_sizes)))
+  return(boundary)
+}
+                 
+pocock_boundary<-function(interim_sample_sizes=c(20,20),
+                          final_sample_sizes=c(40,40),
+                          alpha=0.05){
+  boundary<-alpha*log(1+exp(1)*sum(interim_sample_sizes)/sum(final_sample_sizes))
+  return(boundary)
+}
+
+
+        
