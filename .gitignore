@@ -4,3 +4,4 @@
 .Ruserdata
 aux_files/*
 *.Rproj
+.DS_Store
